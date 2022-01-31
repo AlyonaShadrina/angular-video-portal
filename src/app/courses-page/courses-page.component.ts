@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss']
 })
-export class CoursesPageComponent implements OnInit {
+export class CoursesPageComponent {
+
+  searchValue: string = '';
 
   constructor() { }
 
-  ngOnInit(): void {
+  onSearchButtonClick(): void {
+    console.log('searchValue', this.searchValue);
   }
 
 }
