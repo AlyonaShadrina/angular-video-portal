@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     FooterComponent,
     LogoComponent,
     CoursesPageComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    CourseListItemComponent
   ],
   imports: [
     BrowserModule,

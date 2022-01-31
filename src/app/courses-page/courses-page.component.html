@@ -1,6 +1,14 @@
-<div>
+<div class="content-container">
   <input type="text" [(ngModel)]="searchValue">
   <button (click)="onSearchButtonClick()">Search</button>
   <button>Add course</button>
+  <ul>
+    <app-course-list-item
+      *ngFor="let course of courses; trackBy: trackCourseById; let odd=odd;"
+      [course]="course"
+      [odd]="odd"
+      (deleteCourse)="deleteCourse($event)"
+    ></app-course-list-item>
+  </ul>
 </div>
 
