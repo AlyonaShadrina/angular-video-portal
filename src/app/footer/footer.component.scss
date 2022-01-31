@@ -1,0 +1,9 @@
+.footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  // temporary decision until layout component created. then flex can be used
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
