@@ -10,6 +10,7 @@ import { LogoComponent } from './logo/logo.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
+import { HighlightDateBasedDirective } from './directives/highlight-date-based.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CourseListItemComponent } from './course-list-item/course-list-item.com
     LogoComponent,
     CoursesPageComponent,
     BreadcrumbsComponent,
-    CourseListItemComponent
+    CourseListItemComponent,
+    HighlightDateBasedDirective
   ],
   imports: [
     BrowserModule,

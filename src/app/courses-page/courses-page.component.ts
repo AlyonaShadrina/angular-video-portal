@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { getRandomDate } from 'src/shared/dataGeneration';
 import { ICourse } from 'src/shared/interfaces';
 
 @Component({
@@ -22,7 +23,7 @@ export class CoursesPageComponent implements OnInit, OnChanges {
       this.courses.push({
         id: i,
         title: `${i} title`,
-        creation_date: `${Date.now() + i}`,
+        creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
         duration: i * Math.random(),
         description: `${i} description`,
       })

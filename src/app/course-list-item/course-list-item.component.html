@@ -1,4 +1,4 @@
-<li [style.background-color]="odd ? 'lightgrey' : 'transparent'">
+<li [style.background-color]="odd ? 'lightgrey' : 'transparent'" [appHighlightDateBased]="course.creation_date">
   <p>{{course.title}}</p>
   <p>{{course.creation_date}}</p>
   <p>{{course.description}}</p>
