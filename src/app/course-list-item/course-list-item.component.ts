@@ -8,7 +8,7 @@ import { ICourse } from 'src/shared/interfaces';
 })
 export class CourseListItemComponent implements OnInit, OnChanges {
 
-  @Input() course?: ICourse;
+  @Input() course!: ICourse;
   @Input() odd?: boolean;
 
   constructor() {
@@ -26,7 +26,7 @@ export class CourseListItemComponent implements OnInit, OnChanges {
 
   onCourseDelete() {
     console.log('onCourseDelete');
-    this.deleteCourse.emit(this.course?.id);
+    this.deleteCourse.emit(this.course.id);
   }
 
 }

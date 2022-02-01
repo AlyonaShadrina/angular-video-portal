@@ -1,8 +1,8 @@
 <li [style.background-color]="odd ? 'lightgrey' : 'transparent'">
-  <p>{{course?.title}}</p>
-  <p>{{course?.creation_date}}</p>
-  <p>{{course?.description}}</p>
-  <p>{{course?.duration}}</p>
+  <p>{{course.title}}</p>
+  <p>{{course.creation_date}}</p>
+  <p>{{course.description}}</p>
+  <p>{{course.duration}}</p>
   <button>edit</button>
-  <button (click)="onCourseDelete()">delete</button>
+  <button (click)="onCourseDelete()" class="delete">delete</button>
 </li>
