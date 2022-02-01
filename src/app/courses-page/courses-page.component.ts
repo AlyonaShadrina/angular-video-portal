@@ -33,7 +33,6 @@ export class CoursesPageComponent implements OnInit, OnChanges {
   }
 
   deleteCourse(courseId: ICourse['id']): void {
-    console.log('delete', courseId);
     this.courses = this.courses.filter(course => course.id !== courseId)
   }
 
