@@ -13,6 +13,7 @@ import { CourseListItemComponent } from './course-list-item/course-list-item.com
 import { HighlightDateBasedDirective } from './directives/highlight-date-based.directive';
 import { DurationPipe } from './pipes/duration.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     CourseListItemComponent,
     HighlightDateBasedDirective,
     DurationPipe,
-    FilterPipe
+    FilterPipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

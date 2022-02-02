@@ -50,4 +50,11 @@ export class CoursesPageComponent implements OnInit, OnChanges {
       return !searchValue || course.title.includes(searchValue);
     }
   }
+
+  transformFieldValueForOrder(course: ICourse, fieldName: keyof ICourse) {
+    if (fieldName === 'creation_date') {
+      return new Date(course.creation_date).getTime();
+    }
+    return course[fieldName]
+  }
 }
