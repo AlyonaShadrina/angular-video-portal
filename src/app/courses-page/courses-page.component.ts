@@ -19,15 +19,17 @@ export class CoursesPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    Array(10).fill(null).forEach((_, i) => {
-      this.courses.push({
-        id: i,
-        title: `${i} title`,
-        creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
-        duration: i * Math.random(),
-        description: `${i} description`,
+    setTimeout(() => {
+      Array(10).fill(null).forEach((_, i) => {
+        this.courses.push({
+          id: i,
+          title: `${i} title`,
+          creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
+          duration: i * Math.random(),
+          description: `${i} description`,
+        })
       })
-    })
+    }, 2000)
   }
   ngOnChanges(): void {
     console.log('app-courses-page ngOnChanges');
