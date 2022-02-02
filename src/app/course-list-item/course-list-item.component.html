@@ -1,9 +1,9 @@
 <li [style.background-color]="odd ? 'lightgrey' : 'transparent'" [appHighlightDateBased]="course.creation_date" [ngClass]="{'course--top-rated': course.topRated}">
   <p>
-    {{course.title}}
+    {{course.title | uppercase }}
     <span *ngIf="course.topRated">!</span>
   </p>
-  <p>{{course.creation_date}}</p>
+  <p>{{course.creation_date | date : 'longDate' }}</p>
   <p>{{course.description}}</p>
   <p>{{course.duration}}</p>
   <button>edit</button>
