@@ -9,13 +9,14 @@ import { ICourse } from 'src/shared/interfaces';
 })
 export class CoursesPageComponent implements OnInit, OnChanges {
 
+  searchInputValue: string = '';
   searchValue: string = '';
   courses: ICourse[] = [];
 
   constructor() { }
 
   onSearchButtonClick(): void {
-    console.log('searchValue', this.searchValue);
+    this.searchValue = this.searchInputValue;
   }
 
   ngOnInit(): void {
@@ -44,4 +45,9 @@ export class CoursesPageComponent implements OnInit, OnChanges {
     return course.id;
   }
 
+  filterCourses(searchValue: string) {
+    return function (course: ICourse): boolean {
+      return !searchValue || course.title.includes(searchValue);
+    }
+  }
 }

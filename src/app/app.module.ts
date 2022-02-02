@@ -12,6 +12,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { HighlightDateBasedDirective } from './directives/highlight-date-based.directive';
 import { DurationPipe } from './pipes/duration.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DurationPipe } from './pipes/duration.pipe';
     BreadcrumbsComponent,
     CourseListItemComponent,
     HighlightDateBasedDirective,
-    DurationPipe
+    DurationPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
