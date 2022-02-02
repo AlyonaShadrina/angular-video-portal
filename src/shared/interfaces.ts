@@ -4,6 +4,7 @@ export interface ICourse {
   creation_date: string;
   duration: number;
   description: string;
+  topRated: boolean;
 }
 
 export interface IUser {

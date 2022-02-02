@@ -27,6 +27,7 @@ export class CoursesPageComponent implements OnInit, OnChanges {
           creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
           duration: i * Math.random(),
           description: `${i} description`,
+          topRated: Math.random() > .5,
         })
       })
     }, 2000)

@@ -1,0 +1,6 @@
+.course--top-rated {
+  &::before {
+    content: 'top!';
+    color: red;
+  }
+}
