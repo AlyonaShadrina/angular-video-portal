@@ -7,5 +7,10 @@
   <p>{{course.description}}</p>
   <p>{{course.duration | duration}}</p>
   <button>edit</button>
-  <button (click)="onCourseDelete()" class="delete">delete</button>
+  <button (click)="deleteModal.open()" class="delete">delete</button>
+  <app-modal *ngIf="deleteModal.isOpened">
+    Delete {{course.title | uppercase}}?
+    <button (click)="deleteModal.close()" class="delete">cancel</button>
+    <button (click)="onCourseDelete()" class="delete">delete</button>
+  </app-modal>
 </li>

@@ -1,11 +1,13 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { getRandomDate, getRandomInt } from 'src/shared/dataGeneration';
+
 import { ICourse } from 'src/shared/interfaces';
+
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
-  styleUrls: ['./courses-page.component.scss']
+  styleUrls: ['./courses-page.component.scss'],
 })
 export class CoursesPageComponent implements OnInit, OnChanges {
 
@@ -13,7 +15,7 @@ export class CoursesPageComponent implements OnInit, OnChanges {
   searchValue: string = '';
   courses: ICourse[] = [];
 
-  constructor() { }
+  constructor(private apiServise: ApiService) { }
 
   onSearchButtonClick(): void {
     this.searchValue = this.searchInputValue;
@@ -21,16 +23,7 @@ export class CoursesPageComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     setTimeout(() => {
-      Array(10).fill(null).forEach((_, i) => {
-        this.courses.push({
-          id: i,
-          title: `${i} title`,
-          creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
-          duration: getRandomInt(10, 400),
-          description: `${i} description`,
-          topRated: Math.random() > .5,
-        })
-      })
+      this.courses = this.apiServise.getCoursesList();
     }, 2000)
   }
   ngOnChanges(): void {
