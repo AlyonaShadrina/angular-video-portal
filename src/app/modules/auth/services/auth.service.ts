@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { IUser } from '../interfaces';
 
 @Injectable({
@@ -7,7 +8,8 @@ import { IUser } from '../interfaces';
 export class AuthService {
 
   userInfo: null | IUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null;
-  isAuthenticated = false;
+  isAuthenticated = !!this.userInfo;
+  isAuthenticated$: Subject<boolean> = new Subject<boolean>();
 
   constructor() { }
 
@@ -22,12 +24,14 @@ export class AuthService {
     }
     this.userInfo = fakeUser;
     this.isAuthenticated = true;
+    this.isAuthenticated$.next(this.isAuthenticated);
     localStorage.setItem('user', JSON.stringify(this.userInfo));
   }
 
   logout() {
     this.userInfo = null;
     this.isAuthenticated = false;
+    this.isAuthenticated$.next(this.isAuthenticated);
     localStorage.removeItem('user');
   }
 

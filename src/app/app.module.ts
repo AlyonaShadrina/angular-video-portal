@@ -10,6 +10,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CoursesModule } from './modules/courses/courses.module';
 import { AuthService } from './modules/auth/services/auth.service';
 import { AuthModule } from './modules/auth/auth.module';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthModule } from './modules/auth/auth.module';
     FooterComponent,
     LogoComponent,
     BreadcrumbsComponent,
+    IfAuthenticatedDirective,
   ],
   imports: [
     BrowserModule,
