@@ -28,7 +28,7 @@ import { ApiService } from './services/api.service';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [CoursesPageComponent],
   providers: [ApiService],

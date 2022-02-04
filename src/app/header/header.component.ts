@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../modules/auth/services/auth.service';
 
 @Component({
@@ -7,8 +7,6 @@ import { AuthService } from '../modules/auth/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
-  userInfo = this.authService.getUserInfo();
 
   constructor(public authService: AuthService) { }
 

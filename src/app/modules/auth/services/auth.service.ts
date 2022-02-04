@@ -12,6 +12,8 @@ export class AuthService {
   constructor() { }
 
   login() {
+    console.log('login called');
+
     const fakeUser = {
       id: 0,
       username: 'testuser',
@@ -19,11 +21,13 @@ export class AuthService {
       last_name: 'bbb',
     }
     this.userInfo = fakeUser;
+    this.isAuthenticated = true;
     localStorage.setItem('user', JSON.stringify(this.userInfo));
   }
 
   logout() {
     this.userInfo = null;
+    this.isAuthenticated = false;
     localStorage.removeItem('user');
   }
 

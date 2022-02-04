@@ -9,6 +9,7 @@ import { LogoComponent } from './logo/logo.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CoursesModule } from './modules/courses/courses.module';
 import { AuthService } from './modules/auth/services/auth.service';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthService } from './modules/auth/services/auth.service';
     BrowserModule,
     AppRoutingModule,
     CoursesModule,
+    AuthModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

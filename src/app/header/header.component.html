@@ -1,8 +1,8 @@
 <header class="header background-dark">
   <div class="header__container content-container ">
     <ng-content></ng-content>
-    <div class="profile" *ngIf="!!userInfo">
-      <div>{{userInfo.username}}</div>
+    <div class="profile" *ngIf="authService.isAuthenticated">
+      <div>{{authService.userInfo?.username}}</div>
       <button (click)="authService.logout()">Logout</button>
     </div>
   </div>
