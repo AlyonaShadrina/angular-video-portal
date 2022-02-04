@@ -1,9 +1,9 @@
 <header class="header background-dark">
   <div class="header__container content-container ">
     <ng-content></ng-content>
-    <div class="profile">
-      <div>UserName</div>
-      <button>Logout</button>
+    <div class="profile" *ngIf="!!userInfo">
+      <div>{{userInfo.username}}</div>
+      <button (click)="authService.logout()">Logout</button>
     </div>
   </div>
 </header>

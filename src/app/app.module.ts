@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CoursesModule } from './modules/courses/courses.module';
+import { AuthService } from './modules/auth/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { CoursesModule } from './modules/courses/courses.module';
     AppRoutingModule,
     CoursesModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

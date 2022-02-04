@@ -6,9 +6,3 @@ export interface ICourse {
   description: string;
   topRated: boolean;
 }
-
-export interface IUser {
-  id: number;
-  first_name: string;
-  last_name: string;
-}
