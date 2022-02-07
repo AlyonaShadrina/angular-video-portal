@@ -1,0 +1,15 @@
+<div class="container">
+  <form>
+    <input type="text" name="title" [(ngModel)]="formValues.title">
+    <textarea name="description" cols="30" rows="10" [(ngModel)]="formValues.description"></textarea>
+    <input type="date" name="creation_date" [(ngModel)]="formValues.creation_date">
+    <label for="">
+      <p>duration</p>
+      <input type="number" name="duration" [(ngModel)]="formValues.duration">
+      <span>{{formValues.duration | duration}}</span>
+    </label>
+    <input type="text" name="authors">
+    <button type="submit" (click)="onFormSubmit()">save</button>
+    <button type="reset">cancel</button>
+  </form>
+</div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ModalService } from 'src/app/services/modal/modal.service';
 import { ICourse } from 'src/shared/interfaces';
 
@@ -7,6 +7,7 @@ import { ICourse } from 'src/shared/interfaces';
   templateUrl: './course-list-item.component.html',
   styleUrls: ['./course-list-item.component.scss'],
   providers: [ModalService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseListItemComponent implements OnInit, OnChanges {
 

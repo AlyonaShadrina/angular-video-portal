@@ -11,6 +11,7 @@ import { ModalComponent } from 'src/app/modal/modal.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { ApiService } from './services/api.service';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 
 
@@ -25,12 +26,13 @@ import { ApiService } from './services/api.service';
     DurationPipe,
     FilterPipe,
     OrderByPipe,
+    AddCourseComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
   ],
-  exports: [CoursesPageComponent],
+  exports: [CoursesPageComponent, AddCourseComponent],
   providers: [ApiService],
 })
 export class CoursesModule { }
