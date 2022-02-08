@@ -12,7 +12,7 @@ import { ApiService } from '../services/api.service';
 })
 export class AddCourseComponent implements OnInit {
 
-  formValues: Omit<ICourse, 'id' | 'topRated'> | ICourse = {
+  formValues: Omit<ICourse, 'id' | 'is_top_rated'> | ICourse = {
     title: '',
     creation_date: '',
     duration: 0,
@@ -23,21 +23,26 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const course = this.apiService.getCourseById(params['id']);
-      if (course) {
-        this.formValues = course;
-      }
+      this.apiService.getCourseById(params['id']).subscribe(response => {
+        if (response) {
+          this.formValues = response;
+        }
+      });
+
     });
   }
 
   onFormSubmit() {
-    console.log('formValues', this.formValues);
     if ((this.formValues as ICourse).id) {
-      this.apiService.updateCourse();
+      this.apiService.updateCourse((this.formValues as ICourse).id, this.formValues).subscribe(response => {
+        this.formValues = response;
+      });
     } else {
-      this.apiService.postCourse();
+      this.apiService.postCourse(this.formValues).subscribe(response => {
+        this.formValues = response;
+      });
     }
-    this.router.navigate(['/courses'])
+    // this.router.navigate(['/courses'])
   }
 
 }

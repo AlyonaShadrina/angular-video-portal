@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { getRandomDate, getRandomInt } from 'src/shared/dataGeneration';
@@ -8,39 +9,30 @@ import { ICourse } from 'src/shared/interfaces';
 })
 export class ApiService {
 
-  constructor( ) { }
+  constructor(private http: HttpClient) { }
 
   private _coursesList: ICourse[] = [];
+  private urlCourses = 'http://localhost:3000/courses';
 
-  getCoursesList() {
-    this._coursesList = Array(10).fill(null).map((_, i) => ({
-      id: i,
-      title: `${i} title`,
-      creation_date: getRandomDate(new Date(2021, 11, 1), new Date(2022, 3, 1)).toISOString(),
-      duration: getRandomInt(10, 400),
-      description: `${i} description`,
-      topRated: Math.random() > .5,
-    }))
-    return this._coursesList;
+  getCoursesList(options?: { queryObject: string | URLSearchParams | string[][] | Record<string, string> | undefined }) {
+    let queryString = options?.queryObject ? new URLSearchParams(options.queryObject).toString() : '';
+
+    return this.http.get<ICourse[]>(`${this.urlCourses}?${queryString}`);
   }
 
-  postCourse() {
-
+  postCourse(data: Omit<ICourse, 'id' | 'is_top_rated'>) {
+    return this.http.post<ICourse>(`${this.urlCourses}`, data);
   }
 
   getCourseById(id: ICourse['id'] | string) {
-    if (!this._coursesList.length) {
-      this.getCoursesList()
-    }
-    const result = this._coursesList.find(course => course.id == id);
-    return result;
+    return this.http.get<ICourse>(`${this.urlCourses}/${id}`);
   }
 
-  updateCourse() {
-
+  updateCourse(id: ICourse['id'] | string, data: Partial<ICourse>) {
+    return this.http.patch<ICourse>(`${this.urlCourses}/${id}`, data);
   }
 
-  deleteCourse() {
-
+  deleteCourse(id: ICourse['id']) {
+    return this.http.delete<void>(`${this.urlCourses}/${id}`);
   }
 }

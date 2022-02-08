@@ -5,7 +5,7 @@
   <div *ngIf="courses.length; else elseBlock">
     <ul>
       <app-course-list-item
-        *ngFor="let course of courses | filter:filterCourses(searchValue) | orderBy:'creation_date':transformFieldValueForOrder; trackBy: trackCourseById; let odd=odd;"
+        *ngFor="let course of courses | orderBy:'creation_date':transformFieldValueForOrder; trackBy: trackCourseById; let odd=odd;"
         [course]="course"
         [odd]="odd"
         (deleteCourse)="deleteCourse($event)"

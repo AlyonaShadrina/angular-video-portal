@@ -50,7 +50,7 @@ describe('CoursesPageComponent', () => {
       creation_date: `${Date.now() + 1}`,
       duration: 1 * Math.random(),
       description: `${1} description`,
-      topRated: false,
+      is_top_rated: false,
     });
 
     expect(result).toBe(1);
