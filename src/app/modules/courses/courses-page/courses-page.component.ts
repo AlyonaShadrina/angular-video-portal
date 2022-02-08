@@ -13,13 +13,15 @@ import { ApiService } from '../services/api.service';
 export class CoursesPageComponent implements OnInit {
 
   searchInputValue: string = '';
-  searchValue: string = '';
   courses: ICourse[] = [];
 
   // updating queryParams should happen through helper to automatically trigger request
-  queryParamsUpdateHelper$ = new BehaviorSubject<Record<string, string>>({});
+  queryParamsUpdateHelper$ = new BehaviorSubject<Record<string, string | number>>({});
   // for storing all required query params (filtering, pagination...)
-  queryParams = {};
+  queryParams: Record<string, string | number> = {
+    _page: 1,
+    _limit: 5,
+  };
 
   constructor(private apiServise: ApiService) {
     this.queryParamsUpdateHelper$.subscribe(v => {
@@ -29,13 +31,19 @@ export class CoursesPageComponent implements OnInit {
   }
 
   getCourses(): void {
-    this.apiServise.getCoursesList({ queryObject: this.queryParams }).subscribe((response) => {
+    this.apiServise.getCoursesList({ queryObject: this.queryParams as Record<string, string> }).subscribe((response) => {
       this.courses = response;
     });
   }
 
   onSearchButtonClick(): void {
     this.queryParamsUpdateHelper$.next({ title_like: this.searchInputValue });
+  }
+  goToNextPage(): void {
+    this.queryParamsUpdateHelper$.next({ _page: ++(this.queryParams['_page'] as number) });
+  }
+  goToPrevPage(): void {
+    this.queryParamsUpdateHelper$.next({ _page: --(this.queryParams['_page'] as number) });
   }
 
   ngOnInit(): void {

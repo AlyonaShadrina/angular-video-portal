@@ -79,6 +79,20 @@
       "duration": 211,
       "description": "description",
       "is_top_rated": false
+    },
+    {
+      "title": "ui course",
+      "creation_date": "2022-12-14",
+      "duration": 100,
+      "description": "sdmvsdvjnsjdvmdsvjkjsd",
+      "id": 12
+    },
+    {
+      "title": "added from ui 2",
+      "creation_date": "2021-10-12",
+      "duration": 40,
+      "description": "ferferfef",
+      "id": 13
     }
   ]
 }

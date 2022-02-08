@@ -11,6 +11,8 @@
         (deleteCourse)="deleteCourse($event)"
       ></app-course-list-item>
     </ul>
+    <button (click)="goToPrevPage()" *ngIf="queryParams['_page'] > 1">Prev page</button>
+    <button (click)="goToNextPage()">Next page</button>
   </div>
   <ng-template #elseBlock><div>No data</div></ng-template>
 </div>
