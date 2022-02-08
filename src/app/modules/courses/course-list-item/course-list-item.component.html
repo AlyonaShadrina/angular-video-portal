@@ -1,6 +1,8 @@
 <li [style.background-color]="odd ? 'lightgrey' : 'transparent'" [appHighlightDateBased]="course.creation_date" [ngClass]="{'course--top-rated': course.topRated}">
   <p>
-    {{course.title | uppercase}}
+    <a [routerLink]="['/courses', course.id]">
+      {{course.title | uppercase}}
+    </a>
     <span *ngIf="course.topRated">!</span>
   </p>
   <p>{{course.creation_date | date : 'longDate'}}</p>

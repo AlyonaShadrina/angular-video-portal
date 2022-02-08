@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { IUser } from '../interfaces';
 
@@ -11,7 +12,7 @@ export class AuthService {
   isAuthenticated = !!this.userInfo;
   isAuthenticated$: Subject<boolean> = new Subject<boolean>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   login() {
     console.log('login called');
@@ -26,6 +27,7 @@ export class AuthService {
     this.isAuthenticated = true;
     this.isAuthenticated$.next(this.isAuthenticated);
     localStorage.setItem('user', JSON.stringify(this.userInfo));
+    this.router.navigate(['/courses'])
   }
 
   logout() {
@@ -33,6 +35,7 @@ export class AuthService {
     this.isAuthenticated = false;
     this.isAuthenticated$.next(this.isAuthenticated);
     localStorage.removeItem('user');
+    this.router.navigate(['/login'])
   }
 
   getUserInfo() {

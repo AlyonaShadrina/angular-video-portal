@@ -11,6 +11,7 @@ import { CoursesModule } from './modules/courses/courses.module';
 import { AuthService } from './modules/auth/services/auth.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated.directiv
     LogoComponent,
     BreadcrumbsComponent,
     IfAuthenticatedDirective,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

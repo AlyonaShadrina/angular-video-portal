@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { DurationPipe } from 'src/app/pipes/duration.pipe';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
@@ -31,6 +32,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
   ],
   exports: [CoursesPageComponent, AddCourseComponent],
   providers: [ApiService],
