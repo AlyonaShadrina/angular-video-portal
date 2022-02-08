@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ICourse } from 'src/shared/interfaces';
 
@@ -12,14 +12,14 @@ import { ApiService } from '../services/api.service';
 })
 export class AddCourseComponent implements OnInit {
 
-  formValues: Omit<ICourse, 'id' | 'topRated'> = {
+  formValues: Omit<ICourse, 'id' | 'topRated'> | ICourse = {
     title: '',
     creation_date: '',
     duration: 0,
     description: '',
   };
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -32,6 +32,12 @@ export class AddCourseComponent implements OnInit {
 
   onFormSubmit() {
     console.log('formValues', this.formValues);
+    if ((this.formValues as ICourse).id) {
+      this.apiService.updateCourse();
+    } else {
+      this.apiService.postCourse();
+    }
+    this.router.navigate(['/courses'])
   }
 
 }

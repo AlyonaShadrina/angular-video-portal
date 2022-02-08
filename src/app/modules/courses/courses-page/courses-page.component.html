@@ -1,7 +1,7 @@
 <div class="content-container">
   <input type="text" [(ngModel)]="searchInputValue">
   <button (click)="onSearchButtonClick()">Search</button>
-  <button>Add course</button>
+  <button routerLink="./new">Add course</button>
   <div *ngIf="courses.length; else elseBlock">
     <ul>
       <app-course-list-item
