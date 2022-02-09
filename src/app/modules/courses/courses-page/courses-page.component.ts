@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { debounce, distinctUntilChanged, Subject, timer } from 'rxjs';
 
 import { ICourse } from 'src/shared/interfaces';
 
@@ -15,13 +15,15 @@ export class CoursesPageComponent implements OnInit {
   searchInputValue: string = '';
   courses: ICourse[] = [];
 
-  // updating queryParams should happen through helper to automatically trigger request
-  queryParamsUpdateHelper$ = new BehaviorSubject<Record<string, string | number>>({});
   // for storing all required query params (filtering, pagination...)
   queryParams: Record<string, string | number> = {
     _page: 1,
     _limit: 5,
   };
+  // updating queryParams should happen through helper to automatically trigger request
+  queryParamsUpdateHelper$ = new Subject();
+  // we use observable for debouncing instead of directly using queryParamsUpdateHelper$
+  search$ = new Subject();
 
   constructor(private apiServise: ApiService) { }
 
@@ -31,8 +33,8 @@ export class CoursesPageComponent implements OnInit {
     });
   }
 
-  onSearchButtonClick(): void {
-    this.queryParamsUpdateHelper$.next({ title_like: this.searchInputValue });
+  onSearchInputKeyup(event: any): void {
+    this.search$.next(event.target?.value);
   }
   goToNextPage(): void {
     this.queryParamsUpdateHelper$.next({ _page: ++(this.queryParams['_page'] as number) });
@@ -44,8 +46,15 @@ export class CoursesPageComponent implements OnInit {
   ngOnInit(): void {
     this.getCourses();
 
-    this.queryParamsUpdateHelper$.subscribe(v => {
-      this.queryParams = { ...this.queryParams, ...v }
+    this.search$.pipe(
+      debounce(() => timer(500)),
+      distinctUntilChanged(),
+    ).subscribe((searchValue) => {
+      this.queryParamsUpdateHelper$.next({ title_like: searchValue as string, _page: 1, });
+    })
+
+    this.queryParamsUpdateHelper$.subscribe((v) => {
+      this.queryParams = { ...this.queryParams, ...(v as  Record<string, string>) }
       this.getCourses()
     })
   }
@@ -53,7 +62,6 @@ export class CoursesPageComponent implements OnInit {
   deleteCourse(courseId: ICourse['id']): void {
     this.apiServise.deleteCourse(courseId).subscribe({
       next: () => {
-        // this.courses = this.courses.filter(course => course.id !== courseId);
         this.getCourses();
       },
       error: () => {
