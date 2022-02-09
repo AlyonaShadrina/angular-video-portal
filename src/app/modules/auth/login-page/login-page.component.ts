@@ -14,7 +14,7 @@ export class LoginPageComponent {
 
   onSubmit(f: NgForm) {
     console.log(f.value);
-    this.authService.login();
+    this.authService.login(f.value);
   }
 
 }

@@ -94,5 +94,15 @@
       "description": "ferferfef",
       "id": 13
     }
+  ],
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$y1CY5bfqcJFyXhfmHgxQW.CRod3R/UrDwp.hWDj4nqOHXAlkMCkGG",
+      "id": 1,
+      "username": "testuser1",
+      "first_name": "firstname",
+      "last_name": "lastname"
+    }
   ]
 }

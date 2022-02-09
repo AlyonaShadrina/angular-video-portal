@@ -23,12 +23,7 @@ export class CoursesPageComponent implements OnInit {
     _limit: 5,
   };
 
-  constructor(private apiServise: ApiService) {
-    this.queryParamsUpdateHelper$.subscribe(v => {
-      this.queryParams = { ...this.queryParams, ...v }
-      this.getCourses()
-    })
-  }
+  constructor(private apiServise: ApiService) { }
 
   getCourses(): void {
     this.apiServise.getCoursesList({ queryObject: this.queryParams as Record<string, string> }).subscribe((response) => {
@@ -48,6 +43,11 @@ export class CoursesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCourses();
+
+    this.queryParamsUpdateHelper$.subscribe(v => {
+      this.queryParams = { ...this.queryParams, ...v }
+      this.getCourses()
+    })
   }
 
   deleteCourse(courseId: ICourse['id']): void {

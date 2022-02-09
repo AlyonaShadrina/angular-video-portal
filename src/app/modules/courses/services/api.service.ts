@@ -11,7 +11,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private _coursesList: ICourse[] = [];
   private urlCourses = 'http://localhost:3000/courses';
 
   getCoursesList(options?: { queryObject: string | URLSearchParams | string[][] | Record<string, string> | undefined }) {

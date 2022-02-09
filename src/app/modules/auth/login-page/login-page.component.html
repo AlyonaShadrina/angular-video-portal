@@ -1,5 +1,5 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <input name="first" ngModel required #first="ngModel">
-  <input name="last" ngModel>
+  <input name="email" ngModel required #first="ngModel" placeholder="email">
+  <input name="password" ngModel placeholder="password">
   <button>Submit</button>
 </form>
